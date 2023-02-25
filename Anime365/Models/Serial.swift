@@ -24,6 +24,9 @@ struct Serial: Codable {
     let titleLines, allTitles: [String]
     let title: String
     let url: String
+    let descriptions: [Description]
+    let episodes: [Episode]
+    let genres: [Genre]
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,6 +40,18 @@ struct Serial: Codable {
         case myAnimeListScore, worldArtScore, worldArtTopPlace, numberOfEpisodes, season, year, type, typeTitle, titles
         case posterURL = "posterUrl"
         case posterURLSmall = "posterUrlSmall"
-        case titleLines, allTitles, title, url
+        case titleLines, allTitles, title, url, descriptions, episodes, genres
     }
+}
+
+// MARK: - Genre
+struct Genre: Codable {
+    let id: Int
+    let title: String
+    let url: String
+}
+
+// MARK: - Description
+struct Description: Codable {
+    let source, value, updatedDateTime: String
 }

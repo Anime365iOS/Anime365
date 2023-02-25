@@ -12,7 +12,6 @@
 		C65BD8A929A995A1006E7239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65BD8A829A995A1006E7239 /* Assets.xcassets */; };
 		C65BD8AC29A995A1006E7239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65BD8AB29A995A1006E7239 /* Preview Assets.xcassets */; };
 		C65BD8CB29A9974D006E7239 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C65BD8CA29A9974D006E7239 /* Alamofire */; };
-		C65BD8D029A999EE006E7239 /* TranslationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD8CF29A999EE006E7239 /* TranslationsController.swift */; };
 		C65BD90829A99CF6006E7239 /* TypeLang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD8FD29A99CF6006E7239 /* TypeLang.swift */; };
 		C65BD90929A99CF6006E7239 /* JSONSchemaSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD8FE29A99CF6006E7239 /* JSONSchemaSupport.swift */; };
 		C65BD90A29A99CF6006E7239 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD8FF29A99CF6006E7239 /* Episode.swift */; };
@@ -28,6 +27,9 @@
 		C65BD91B29AA5E97006E7239 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91829AA5E97006E7239 /* Download.swift */; };
 		C65BD91C29AA5E97006E7239 /* Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91929AA5E97006E7239 /* Embed.swift */; };
 		C65BD91D29AA5E97006E7239 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91A29AA5E97006E7239 /* Stream.swift */; };
+		C65BD92029AA6A70006E7239 /* SerialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91F29AA6A70006E7239 /* SerialView.swift */; };
+		C65BD92429AA7906006E7239 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD92329AA7906006E7239 /* RemoteImage.swift */; };
+		C65BD92629AA84F4006E7239 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD92529AA84F4006E7239 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +38,6 @@
 		C65BD8A629A995A0006E7239 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C65BD8A829A995A1006E7239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C65BD8AB29A995A1006E7239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C65BD8CF29A999EE006E7239 /* TranslationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsController.swift; sourceTree = "<group>"; };
 		C65BD8FD29A99CF6006E7239 /* TypeLang.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeLang.swift; sourceTree = "<group>"; };
 		C65BD8FE29A99CF6006E7239 /* JSONSchemaSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSchemaSupport.swift; sourceTree = "<group>"; };
 		C65BD8FF29A99CF6006E7239 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
@@ -52,6 +53,9 @@
 		C65BD91829AA5E97006E7239 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		C65BD91929AA5E97006E7239 /* Embed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Embed.swift; sourceTree = "<group>"; };
 		C65BD91A29AA5E97006E7239 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		C65BD91F29AA6A70006E7239 /* SerialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialView.swift; sourceTree = "<group>"; };
+		C65BD92329AA7906006E7239 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
+		C65BD92529AA84F4006E7239 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		C65BD8A329A995A0006E7239 /* Anime365 */ = {
 			isa = PBXGroup;
 			children = (
+				C65BD92129AA78B6006E7239 /* Common */,
 				C65BD8CD29A999C4006E7239 /* Features */,
 				C65BD8B229A995C7006E7239 /* Models */,
 				C65BD8A429A995A0006E7239 /* Anime365App.swift */,
@@ -92,6 +97,7 @@
 				C65BD8A829A995A1006E7239 /* Assets.xcassets */,
 				C65BD8AA29A995A1006E7239 /* Preview Content */,
 				C65BD91629AA5567006E7239 /* AnimeAPI.swift */,
+				C65BD92529AA84F4006E7239 /* WebView.swift */,
 			);
 			path = Anime365;
 			sourceTree = "<group>";
@@ -128,6 +134,7 @@
 		C65BD8CD29A999C4006E7239 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C65BD91E29AA6A53006E7239 /* Serial */,
 				C65BD91329AA4A99006E7239 /* Series */,
 				C65BD8CE29A999D4006E7239 /* Translation */,
 			);
@@ -137,7 +144,6 @@
 		C65BD8CE29A999D4006E7239 /* Translation */ = {
 			isa = PBXGroup;
 			children = (
-				C65BD8CF29A999EE006E7239 /* TranslationsController.swift */,
 			);
 			path = Translation;
 			sourceTree = "<group>";
@@ -147,6 +153,30 @@
 			children = (
 			);
 			path = Series;
+			sourceTree = "<group>";
+		};
+		C65BD91E29AA6A53006E7239 /* Serial */ = {
+			isa = PBXGroup;
+			children = (
+				C65BD91F29AA6A70006E7239 /* SerialView.swift */,
+			);
+			path = Serial;
+			sourceTree = "<group>";
+		};
+		C65BD92129AA78B6006E7239 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C65BD92229AA78C7006E7239 /* UI */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C65BD92229AA78C7006E7239 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C65BD92329AA7906006E7239 /* RemoteImage.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,10 +256,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C65BD90929A99CF6006E7239 /* JSONSchemaSupport.swift in Sources */,
+				C65BD92629AA84F4006E7239 /* WebView.swift in Sources */,
 				C65BD90A29A99CF6006E7239 /* Episode.swift in Sources */,
 				C65BD90D29A99CF6006E7239 /* Translation.swift in Sources */,
 				C65BD91C29AA5E97006E7239 /* Embed.swift in Sources */,
 				C65BD8A729A995A0006E7239 /* ContentView.swift in Sources */,
+				C65BD92429AA7906006E7239 /* RemoteImage.swift in Sources */,
 				C65BD91D29AA5E97006E7239 /* Stream.swift in Sources */,
 				C65BD90E29A99CF6006E7239 /* Serial.swift in Sources */,
 				C65BD90C29A99CF6006E7239 /* Link.swift in Sources */,
@@ -237,8 +269,8 @@
 				C65BD90F29A99CF6006E7239 /* TypeKind.swift in Sources */,
 				C65BD91B29AA5E97006E7239 /* Download.swift in Sources */,
 				C65BD90B29A99CF6006E7239 /* Titles.swift in Sources */,
+				C65BD92029AA6A70006E7239 /* SerialView.swift in Sources */,
 				C65BD91229A99CF6006E7239 /* PurpleType.swift in Sources */,
-				C65BD8D029A999EE006E7239 /* TranslationsController.swift in Sources */,
 				C65BD91129A99CF6006E7239 /* QualityTypeEnum.swift in Sources */,
 				C65BD91729AA5567006E7239 /* AnimeAPI.swift in Sources */,
 				C65BD91029A99CF6006E7239 /* TypeTitle.swift in Sources */,
@@ -368,6 +400,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Anime365/Preview Content\"";
@@ -384,8 +417,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dimensi.Anime365;
+				PRODUCT_BUNDLE_IDENTIFIER = Anime365;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -413,7 +447,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dimensi.Anime365;
+				PRODUCT_BUNDLE_IDENTIFIER = Anime365;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

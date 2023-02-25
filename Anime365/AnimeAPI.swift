@@ -36,7 +36,10 @@ class AnimeAPI {
     
     private func get<T: Decodable>(url: String, parameters: [String: Any]?, responseType: T.Type) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
-            sessionManager.request(url, parameters: parameters).validate().responseDecodable(of: responseType) { response in
+            let headers: HTTPHeaders = [
+                "User-Agent": "Anime365 IOS root@dimensi.dev"
+            ]
+            sessionManager.request(url, parameters: parameters, headers: headers).validate().responseDecodable(of: responseType) { response in
                 switch response.result {
                 case .success(let data):
                     continuation.resume(with: .success(data))
@@ -60,7 +63,7 @@ class AnimeAPI {
 
     func getLatestTranslations(feedType: FeedType? = nil, seriesId: Int? = nil, limit: Int? = nil, fields: String? = nil) async throws -> [Translation] {
         let url = baseUrl + "/translations/"
-        var parameters: [String: Any] = [
+        let parameters: [String: Any] = [
             "feed": feedType?.rawValue as Any,
             "seriesId": seriesId as Any,
             "limit": limit as Any,

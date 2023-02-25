@@ -8,27 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var translations: [Translation] = []
+    @State private var cookies: [HTTPCookie] = []
     
     var body: some View {
-        VStack {
-            if translations.isEmpty {
-                Text("Loading...")
-            } else {
-                List(translations) { translation in
-                    Text(translation.title)
+        NavigationView {
+            VStack {
+                NavigationLink(destination: SerialView(id: 28471).navigationBarTitleDisplayMode(.inline)) {
+                    Text("Перейти в аниме")
                 }
-            }
-        }
-        .onAppear {
-            TranslationListController.shared.getTranslationList { result in
-                switch result {
-                case .success(let translations):
-                    self.translations = translations
-                case .failure(let error):
-                    print("Error loading translations: \(error.localizedDescription)")
+                NavigationLink(destination: {
+                    WebView(url: URL(string: "https://smotret-anime.com/")!, cookiesCompletion: { cookies in
+                        print(cookies)
+                        self.cookies = cookies
+                    }).navigationBarTitleDisplayMode(.inline)
+                }) {
+                    Text("Получить куку")
                 }
-            }
+                Text("Cookies: \(cookies.count)")
+            }.navigationTitle("На главную")
         }
     }
 }
