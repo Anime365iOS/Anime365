@@ -83,7 +83,7 @@ struct SerialView: View {
             .padding()
         }
         .task {
-            await self.viewModel.fetch(id: id)
+            self.viewModel.fetch(id: id)
         }
     }
 }
@@ -101,11 +101,16 @@ extension SerialView {
         
         @Published var serial: Serial?
         
-        func fetch(id: Int) async {
-            do {
-                serial = try await api.getAnimeById(id: id)
-            } catch {
-                print("Error fetching data: \(error.localizedDescription)")
+        func fetch(id: Int) {
+            Task.detached {
+                do {
+                    let data = try await self.api.getAnimeById(id: id)
+                    DispatchQueue.main.async {
+                        self.serial = data
+                    }
+                } catch {
+                    print("Error fetching data: \(error.localizedDescription)")
+                }
             }
         }
     }

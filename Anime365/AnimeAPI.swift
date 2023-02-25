@@ -36,9 +36,19 @@ class AnimeAPI {
     
     private func get<T: Decodable>(url: String, parameters: [String: Any]?, responseType: T.Type) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
-            let headers: HTTPHeaders = [
+            var headers: HTTPHeaders = [
                 "User-Agent": "Anime365 IOS root@dimensi.dev"
             ]
+            
+            if let cookies = HTTPCookieStorage.shared.cookies {
+                let cookieHeader = HTTPCookie.requestHeaderFields(with: cookies)
+                cookieHeader.forEach { key, value in
+                    headers.add(name: key, value: value)
+                }
+            }
+            
+            print(headers)
+            
             sessionManager.request(url, parameters: parameters, headers: headers).validate().responseDecodable(of: responseType) { response in
                 switch response.result {
                 case .success(let data):

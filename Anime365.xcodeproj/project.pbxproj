@@ -29,7 +29,7 @@
 		C65BD91D29AA5E97006E7239 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91A29AA5E97006E7239 /* Stream.swift */; };
 		C65BD92029AA6A70006E7239 /* SerialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91F29AA6A70006E7239 /* SerialView.swift */; };
 		C65BD92429AA7906006E7239 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD92329AA7906006E7239 /* RemoteImage.swift */; };
-		C65BD92629AA84F4006E7239 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD92529AA84F4006E7239 /* WebView.swift */; };
+		C6F045C729AA9B7900ED5281 /* LoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F045C629AA9B7900ED5281 /* LoginWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +55,7 @@
 		C65BD91A29AA5E97006E7239 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		C65BD91F29AA6A70006E7239 /* SerialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialView.swift; sourceTree = "<group>"; };
 		C65BD92329AA7906006E7239 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
-		C65BD92529AA84F4006E7239 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		C6F045C629AA9B7900ED5281 /* LoginWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +97,7 @@
 				C65BD8A829A995A1006E7239 /* Assets.xcassets */,
 				C65BD8AA29A995A1006E7239 /* Preview Content */,
 				C65BD91629AA5567006E7239 /* AnimeAPI.swift */,
-				C65BD92529AA84F4006E7239 /* WebView.swift */,
+				C6F045C629AA9B7900ED5281 /* LoginWebView.swift */,
 			);
 			path = Anime365;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C65BD90929A99CF6006E7239 /* JSONSchemaSupport.swift in Sources */,
-				C65BD92629AA84F4006E7239 /* WebView.swift in Sources */,
+				C6F045C729AA9B7900ED5281 /* LoginWebView.swift in Sources */,
 				C65BD90A29A99CF6006E7239 /* Episode.swift in Sources */,
 				C65BD90D29A99CF6006E7239 /* Translation.swift in Sources */,
 				C65BD91C29AA5E97006E7239 /* Embed.swift in Sources */,

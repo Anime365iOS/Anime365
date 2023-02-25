@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showWebView = false
     @State private var cookies: [HTTPCookie] = []
     
     var body: some View {
@@ -16,17 +17,24 @@ struct ContentView: View {
                 NavigationLink(destination: SerialView(id: 28471).navigationBarTitleDisplayMode(.inline)) {
                     Text("Перейти в аниме")
                 }
-                NavigationLink(destination: {
-                    WebView(url: URL(string: "https://smotret-anime.com/")!, cookiesCompletion: { cookies in
-                        print(cookies)
-                        self.cookies = cookies
-                    }).navigationBarTitleDisplayMode(.inline)
-                }) {
-                    Text("Получить куку")
+                if (cookies.isEmpty) {
+                    Button("Login") {
+                        showWebView = true
+                    }
+                    .sheet(isPresented: $showWebView, onDismiss: {
+                        getWebViewCookies()
+                    }) {
+                        WebView()
+                    }
                 }
-                Text("Cookies: \(cookies.count)")
-            }.navigationTitle("На главную")
+
+            }
+            .navigationTitle("На главную")
         }
+    }
+    
+    func getWebViewCookies() {
+        self.cookies = HTTPCookieStorage.shared.cookies ?? [];
     }
 }
 
