@@ -2,20 +2,11 @@
 // To parse the JSON, add this file to your project and do:
 //
 //   let series = try? newJSONDecoder().decode(Series.self, from: jsonData)
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseSeries { response in
-//     if let series = response.result.value {
-//       ...
-//     }
-//   }
 
 import Foundation
-import Alamofire
 
 // MARK: - Series
-struct Series: Codable {
+struct Serial: Codable {
     let id, aniDBID, animeNewsNetworkID, fansubsID: Int
     let imdbID, worldArtID, isActive, isAiring: Int
     let isHentai: Int

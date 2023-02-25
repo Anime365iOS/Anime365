@@ -2,17 +2,8 @@
 // To parse the JSON, add this file to your project and do:
 //
 //   let episode = try? newJSONDecoder().decode(Episode.self, from: jsonData)
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseEpisode { response in
-//     if let episode = response.result.value {
-//       ...
-//     }
-//   }
 
 import Foundation
-import Alamofire
 
 // MARK: - Episode
 struct Episode: Codable {

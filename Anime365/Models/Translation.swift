@@ -2,20 +2,11 @@
 // To parse the JSON, add this file to your project and do:
 //
 //   let translation = try? newJSONDecoder().decode(Translation.self, from: jsonData)
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseTranslation { response in
-//     if let translation = response.result.value {
-//       ...
-//     }
-//   }
 
 import Foundation
-import Alamofire
 
 // MARK: - Translation
-struct Translation: Codable {
+struct Translation: Codable, Identifiable {
     let id: Int
     let addedDateTime, activeDateTime: String
     let authorsList: [String]
@@ -29,7 +20,7 @@ struct Translation: Codable {
     let url, embedURL: String
     let authorsSummary: String
     let episode: Episode
-    let series: Series
+    let series: Serial
     let duration: String
     let width, height: Int
 

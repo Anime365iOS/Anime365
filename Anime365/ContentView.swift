@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var translations: [Translation] = []
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            if translations.isEmpty {
+                Text("Loading...")
+            } else {
+                List(translations) { translation in
+                    Text(translation.title)
+                }
+            }
         }
-        .padding()
+        .onAppear {
+            TranslationListController.shared.getTranslationList { result in
+                switch result {
+                case .success(let translations):
+                    self.translations = translations
+                case .failure(let error):
+                    print("Error loading translations: \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }
 
