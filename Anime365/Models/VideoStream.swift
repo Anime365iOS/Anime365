@@ -6,7 +6,7 @@
 import Foundation
 
 // MARK: - Stream
-struct Stream: Codable {
+struct VideoStream: Codable {
     let height: Int
     let urls: [String]
 }

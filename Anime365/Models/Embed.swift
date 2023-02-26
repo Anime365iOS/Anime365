@@ -9,7 +9,7 @@ import Foundation
 struct Embed: Codable {
     let embedURL: String
     let download: [Download]
-    let stream: [Stream]
+    let stream: [VideoStream]
     let subtitlesURL: String
     let subtitlesVttURL: String
 

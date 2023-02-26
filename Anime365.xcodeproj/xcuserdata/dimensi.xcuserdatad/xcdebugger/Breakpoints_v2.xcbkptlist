@@ -7,16 +7,452 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BB6DB806-54C0-43A4-B488-144694091335"
-            shouldBeEnabled = "Yes"
+            uuid = "36466752-B75F-4C26-A663-0EFF33C4D7C7"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Anime365/WebView.swift"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "webViewControllerDidDismiss(_:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "454DF82C-DA3A-4FD9-9A5C-FEBDC4C8CCDC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "createPlayer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F934784-80B3-4A6F-955B-BD08A2825BBC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "createPlayer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1F934784-80B3-4A6F-955B-BD08A2825BBC - c303dee665dd57fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "336">
+               </Location>
+               <Location
+                  uuid = "1F934784-80B3-4A6F-955B-BD08A2825BBC - 12194818471b5ab3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) await resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "1F934784-80B3-4A6F-955B-BD08A2825BBC - 98bd5ec41e8933a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "1F934784-80B3-4A6F-955B-BD08A2825BBC - 98bd5ec41e89378"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "1F934784-80B3-4A6F-955B-BD08A2825BBC - f9a7ca23ac419b43"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(13) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9FC205D-59B8-44ED-941C-E4978A57C905"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "createPlayer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C9FC205D-59B8-44ED-941C-E4978A57C905 - 98bd5ec41e893f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "628">
+               </Location>
+               <Location
+                  uuid = "C9FC205D-59B8-44ED-941C-E4978A57C905 - 92bbeff09e5c0ac8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "C9FC205D-59B8-44ED-941C-E4978A57C905 - 5ed9eb1073ba5ec9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(11) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "C9FC205D-59B8-44ED-941C-E4978A57C905 - 45323ad57e6cf94e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(14) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "C9FC205D-59B8-44ED-941C-E4978A57C905 - dc1815e09a32324c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(16) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FC4440B-E10C-4137-AF44-A1EC7C6A996C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "createPlayer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2FC4440B-E10C-4137-AF44-A1EC7C6A996C - 98bd5ec41e89232"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "788">
+               </Location>
+               <Location
+                  uuid = "2FC4440B-E10C-4137-AF44-A1EC7C6A996C - e6f18e474ae9d7db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) await resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "2FC4440B-E10C-4137-AF44-A1EC7C6A996C - 4c33d0eabd82cf8c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "2FC4440B-E10C-4137-AF44-A1EC7C6A996C - 45323ad57e6cf94e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(14) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "2FC4440B-E10C-4137-AF44-A1EC7C6A996C - 45323ad57e6cf888"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(14) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "192">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FC613B8-E9B1-45FC-8548-523E95E151DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "createPlayer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2FC613B8-E9B1-45FC-8548-523E95E151DA - 4c33d0eabd82cfce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "556">
+               </Location>
+               <Location
+                  uuid = "2FC613B8-E9B1-45FC-8548-523E95E151DA - bbaaccae4e465377"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(8) await resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "2FC613B8-E9B1-45FC-8548-523E95E151DA - 92bbeff09e5c0ac8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "2FC613B8-E9B1-45FC-8548-523E95E151DA - 92bbeff09e5c0b4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "2FC613B8-E9B1-45FC-8548-523E95E151DA - 108d257ec817d549"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(15) suspend resume partial function for Anime365.EmbedView.ViewModel.createPlayer() async throws -&gt; ()"
+                  moduleName = "Anime365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimensi/swift-projects/Anime365/Anime365/Features/Serial/EmbedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "483CA931-6CA6-4B59-BA17-606561D52903"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "createPlayer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10C9CC05-E766-49DB-8BFE-8E6526F3216A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "createPlayer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C64C39C1-6305-47A3-99ED-52C0A6A30BE8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anime365/Features/Serial/EmbedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "createPlayer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

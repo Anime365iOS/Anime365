@@ -17,6 +17,9 @@ struct ContentView: View {
                 NavigationLink(destination: SerialView(id: 28471).navigationBarTitleDisplayMode(.inline)) {
                     Text("Перейти в аниме")
                 }
+                NavigationLink(destination: EmbedView(id: 4203402).navigationBarTitleDisplayMode(.inline)) {
+                    Text("Перейти в embed")
+                }
                 if (cookies.isEmpty) {
                     Button("Login") {
                         showWebView = true
