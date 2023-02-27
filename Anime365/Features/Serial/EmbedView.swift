@@ -20,8 +20,10 @@ struct EmbedView: View {
                     VideoPlayer(player: player)
                 }
             }
-        }.task {
-            self.model.fetch(id: id)
+        }.onAppear {
+            model.fetch(id: id)
+        }.onDisappear {
+            model.stopPlayer()
         }
     }
 }
@@ -95,7 +97,7 @@ extension EmbedView {
         
         var subtitleURL: URL? {
             if let embed = embed {
-                return URL(string: embed.subtitlesVttURL)
+                return URL(string: "https://test-subs-dimensi.vercel.app/api/")
 //                return URL(string: "https://smotret-anime.com\(embed.subtitlesURL)")
             }
             return nil
@@ -106,41 +108,55 @@ extension EmbedView {
                 print(streamURL, subtitleURL)
                 let videoAsset = AVURLAsset(url: streamURL)
                 let subtitleAsset = AVURLAsset(url: subtitleURL)
-                let tracks = try! await subtitleAsset.load(.tracks)
-                for track in tracks {
-                    print(track.mediaType, track.trackID, track.description)
-                }
-                print("done")
+                
                 let composition = AVMutableComposition()
                 let videoTrack = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid)!
                 let videoAssetTrack = try! await videoAsset.loadTracks(withMediaType: .video).first!
                 let videoTimeRange = try! await videoAssetTrack.load(.timeRange)
                 try! videoTrack.insertTimeRange(CMTimeRangeMake(start: .zero, duration: videoTimeRange.duration), of: videoAssetTrack, at: .zero)
                 
-                // Create a mutable composition and subtitle track
-                let subtitleTrack = composition.addMutableTrack(withMediaType: .subtitle, preferredTrackID: kCMPersistentTrackID_Invalid)!
+                let audioTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)!
+                let audioAssetTrack = try! await videoAsset.loadTracks(withMediaType: .audio).first!
+                let audioTimeRange = try! await audioAssetTrack.load(.timeRange)
+                try! audioTrack.insertTimeRange(CMTimeRangeMake(start: .zero, duration: audioTimeRange.duration), of: audioAssetTrack, at: .zero)
 
-                let subtitleAssetTrack = try await subtitleAsset.loadTracks(withMediaType: .subtitle).first!
-                print(subtitleAssetTrack.description)
+                // Create a mutable composition and subtitle track
+                let subtitleTrack = composition.addMutableTrack(withMediaType: .text, preferredTrackID: kCMPersistentTrackID_Invalid)!
+
+                let subtitleAssetTrack = try await subtitleAsset.loadTracks(withMediaType: .text).first!
                 let subtitleTimeRange = try! await subtitleAssetTrack.load(.timeRange)
                 // Insert the subtitle asset into the composition
                 try! subtitleTrack.insertTimeRange(CMTimeRangeMake(start: .zero, duration: subtitleTimeRange.duration), of: subtitleAssetTrack, at: .zero)
 
                 // Add the subtitle track to the video track
-                let instruction = AVMutableVideoCompositionInstruction()
-                instruction.timeRange = CMTimeRangeMake(start: .zero, duration: videoAssetTrack.timeRange.duration)
-                let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
-                let subtitleLayerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: subtitleTrack)
-                instruction.layerInstructions = [layerInstruction, subtitleLayerInstruction]
-                let videoComposition = AVMutableVideoComposition()
-                videoComposition.instructions = [instruction]
-                videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
-                let videoNaturalSize = try await videoAssetTrack.load(.naturalSize)
-                videoComposition.renderSize = videoNaturalSize
-                
+                // Если прокинуть это в playItem, то видео вообще нет, только звук и сабы
+//                let instruction = AVMutableVideoCompositionInstruction()
+//                instruction.timeRange = CMTimeRangeMake(start: .zero, duration: videoTimeRange.duration)
+//                let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
+//                let subtitleLayerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: subtitleTrack)
+//                instruction.layerInstructions = [layerInstruction, subtitleLayerInstruction]
+//                let videoComposition = AVMutableVideoComposition()
+//                videoComposition.instructions = [instruction]
+//                videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
+//                let videoNaturalSize = try await videoAssetTrack.load(.naturalSize)
+//                videoComposition.renderSize = videoNaturalSize
+
+            
                 let playerItem = AVPlayerItem(asset: composition)
-                player = AVPlayer(playerItem: playerItem)
+//                playerItem.videoComposition = videoComposition
+                DispatchQueue.main.async {
+                    let p = AVPlayer(playerItem: playerItem);
+//                    p.allowsExternalPlayback = true
+//                    p.usesExternalPlaybackWhileExternalScreenIsActive = false
+                    self.player = p
+                }
             }
+        }
+        
+        func stopPlayer() {
+            player?.allowsExternalPlayback = false
+            player?.pause()
+            player = nil
         }
         
         func fetch(id: Int) {
