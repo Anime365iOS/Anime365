@@ -8,6 +8,7 @@
 import SwiftUI
 import AVKit
 import AVFoundation
+import Alamofire
 
 struct EmbedView: View {
     let id: Int
@@ -17,7 +18,7 @@ struct EmbedView: View {
         Group {
             VStack {
                 if let player = model.player {
-                    VideoPlayer(player: player)
+                    PlayerView(player: player).edgesIgnoringSafeArea(.all)
                 }
             }
         }.onAppear {
@@ -28,48 +29,6 @@ struct EmbedView: View {
     }
 }
 
-//struct HLSPlayer: UIViewControllerRepresentable {
-//    let videoSrc: URL
-//    let subtitleSrc: URL
-//
-//    func makeUIViewController(context: UIViewControllerRepresentableContext<HLSPlayer>) -> AVPlayerViewController {
-//        let playerViewController = AVPlayerViewController()
-//        let videoAsset = AVURLAsset(url: videoSrc)
-//        let subtitleAsset = AVURLAsset(url: subtitleSrc)
-//        let composition = AVMutableComposition()
-//        guard let videoTrack = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else { return playerViewController }
-//        guard let videoAssetTrack = videoAsset.tracks(withMediaType: .video).first else { return playerViewController }
-//        try! videoTrack.insertTimeRange(CMTimeRangeMake(start: .zero, duration: videoAssetTrack.timeRange.duration), of: videoAssetTrack, at: .zero)
-//
-//        // Create a mutable composition and subtitle track
-//        guard let subtitleTrack = composition.addMutableTrack(withMediaType: .text, preferredTrackID: kCMPersistentTrackID_Invalid) else { return playerViewController }
-//
-//        let tracks = try await subtitleAsset.loadTracks(withMediaType: .subtitle)
-//        // Insert the subtitle asset into the composition
-//        guard let subtitleAssetTrack = subtitleAsset.tracks(withMediaType: .text).first else { return playerViewController }
-//        try! subtitleTrack.insertTimeRange(CMTimeRangeMake(start: .zero, duration: subtitleAssetTrack.timeRange.duration), of: subtitleAssetTrack, at: .zero)
-//
-//        // Add the subtitle track to the video track
-//        let instruction = AVMutableVideoCompositionInstruction()
-//        instruction.timeRange = CMTimeRangeMake(start: .zero, duration: videoAssetTrack.timeRange.duration)
-//        let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
-//        let subtitleLayerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: subtitleTrack)
-//        instruction.layerInstructions = [layerInstruction, subtitleLayerInstruction]
-//        let videoComposition = AVMutableVideoComposition()
-//        videoComposition.instructions = [instruction]
-//        videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
-//        videoComposition.renderSize = CGSize(width: videoAssetTrack.naturalSize.width, height: videoAssetTrack.naturalSize.height)
-//
-//        let playerItem = AVPlayerItem(asset: composition)
-//        let player = AVPlayer(playerItem: playerItem)
-//
-//        playerViewController.player = player
-//        return playerViewController
-//    }
-//
-//    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: UIViewControllerRepresentableContext<HLSPlayer>) {
-//    }
-//}
 
 struct EmbedView_Previews: PreviewProvider {
     static var previews: some View {
@@ -78,11 +37,42 @@ struct EmbedView_Previews: PreviewProvider {
 }
 
 
+struct PlayerView: UIViewControllerRepresentable {
+    
+    let player: AVPlayer
+    
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        playerViewController.showsPlaybackControls = true
+        return playerViewController
+    }
+    
+    func updateUIViewController(_ playerViewController: AVPlayerViewController, context: Context) {
+        // do nothing
+    }
+}
+
+
+
 extension EmbedView {
     class ViewModel: ObservableObject {
         private let api = AnimeAPI.shared
         @Published var embed: Embed?
         @Published var player: AVPlayer?
+
+        
+        var id: Int {
+            if let embed = embed {
+                if let range = embed.subtitlesVttURL.range(of: #"[0-9]+"#, options: .regularExpression) {
+                    let numberString = embed.subtitlesVttURL[range]
+                    if let number = Int(numberString) {
+                        return number
+                    }
+                }
+            }
+            return 0
+        }
         
         var streamURL: URL? {
             if let embed = embed {
@@ -95,12 +85,25 @@ extension EmbedView {
             return nil
         }
         
-        var subtitleURL: URL? {
-            if let embed = embed {
-                return URL(string: "https://test-subs-dimensi.vercel.app/api/")
-//                return URL(string: "https://smotret-anime.com\(embed.subtitlesURL)")
+        var subtitleURL: URL?
+        
+        func fetchSubtitles() async throws -> URL {
+            let destination: DownloadRequest.Destination = { _, _ in
+                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                let fileURL = documentsURL.appendingPathComponent("\(String(self.id)).vtt")
+
+                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
-            return nil
+
+            return try await withCheckedThrowingContinuation { continuation in
+                AF.download(embed!.subtitlesVttURL, to: destination).response { response in
+                    if response.error != nil {
+                        continuation.resume(with: .failure(response.error!))
+                    } else {
+                        continuation.resume(with: .success(response.fileURL!))
+                    }
+                }
+            }
         }
         
         func createPlayer() async throws {
@@ -127,28 +130,26 @@ extension EmbedView {
                 let subtitleTimeRange = try! await subtitleAssetTrack.load(.timeRange)
                 // Insert the subtitle asset into the composition
                 try! subtitleTrack.insertTimeRange(CMTimeRangeMake(start: .zero, duration: subtitleTimeRange.duration), of: subtitleAssetTrack, at: .zero)
-
-                // Add the subtitle track to the video track
-                // Если прокинуть это в playItem, то видео вообще нет, только звук и сабы
-//                let instruction = AVMutableVideoCompositionInstruction()
-//                instruction.timeRange = CMTimeRangeMake(start: .zero, duration: videoTimeRange.duration)
-//                let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
-//                let subtitleLayerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: subtitleTrack)
-//                instruction.layerInstructions = [layerInstruction, subtitleLayerInstruction]
-//                let videoComposition = AVMutableVideoComposition()
-//                videoComposition.instructions = [instruction]
-//                videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
-//                let videoNaturalSize = try await videoAssetTrack.load(.naturalSize)
-//                videoComposition.renderSize = videoNaturalSize
-
             
+                
+                
                 let playerItem = AVPlayerItem(asset: composition)
-//                playerItem.videoComposition = videoComposition
+                
+                let titleItem = AVMutableMetadataItem()
+                titleItem.identifier = .commonIdentifierTitle
+                titleItem.value = NSString(string: "Episode 8")
+
+                let subtitleItem = AVMutableMetadataItem()
+                subtitleItem.identifier = .iTunesMetadataTrackSubTitle
+                subtitleItem.value = NSString(string: "Isekai Nonbiri Nouka")
+                
+                playerItem.externalMetadata = [
+                    titleItem,
+                    subtitleItem
+                ]
+                
                 DispatchQueue.main.async {
-                    let p = AVPlayer(playerItem: playerItem);
-//                    p.allowsExternalPlayback = true
-//                    p.usesExternalPlaybackWhileExternalScreenIsActive = false
-                    self.player = p
+                    self.player = AVPlayer(playerItem: playerItem)
                 }
             }
         }
@@ -167,6 +168,7 @@ extension EmbedView {
                         self.embed = data
                         Task.detached {
                             do {
+                                self.subtitleURL = try await self.fetchSubtitles()
                                 try await self.createPlayer()
                             } catch {
                                 print(error.localizedDescription)
