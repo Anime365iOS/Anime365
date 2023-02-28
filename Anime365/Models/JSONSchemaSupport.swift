@@ -17,7 +17,7 @@ struct SerialResponse: Decodable {
 }
 
 struct EpisodeResponse: Decodable {
-    let data: Episode
+    let data: EpisodeFull
 }
 
 struct EmbedResponse: Decodable {

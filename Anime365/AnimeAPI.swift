@@ -124,7 +124,7 @@ class AnimeAPI {
         return response.data
     }
 
-    func getEpisodeInfo(id: Int) async throws -> Episode {
+    func getEpisodeInfo(id: Int) async throws -> EpisodeFull {
         let url = baseUrl + "/episodes/\(id)"
 
         let response: EpisodeResponse = try await get(url: url, parameters: nil, responseType: EpisodeResponse.self)

@@ -12,7 +12,7 @@ struct Translation: Codable, Identifiable {
     let authorsList: [String]
     let fansubsTranslationID, isActive, priority: Int
     let qualityType: QualityTypeEnum
-    let type: PurpleType
+    let type: TranslationType
     let typeKind: TypeKind
     let typeLang: TypeLang
     let updatedDateTime, title: String

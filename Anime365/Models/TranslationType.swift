@@ -1,6 +1,6 @@
 import Foundation
 
-enum PurpleType: String, Codable {
+enum TranslationType: String, Codable {
     case raw = "raw"
     case subEn = "subEn"
     case subRu = "subRu"
