@@ -139,24 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				C65BD91E29AA6A53006E7239 /* Serial */,
-				C65BD91329AA4A99006E7239 /* Series */,
-				C65BD8CE29A999D4006E7239 /* Translation */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		C65BD8CE29A999D4006E7239 /* Translation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Translation;
-			sourceTree = "<group>";
-		};
-		C65BD91329AA4A99006E7239 /* Series */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Series;
 			sourceTree = "<group>";
 		};
 		C65BD91E29AA6A53006E7239 /* Serial */ = {
