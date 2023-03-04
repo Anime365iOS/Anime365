@@ -29,7 +29,6 @@
 		C65BD91C29AA5E97006E7239 /* Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91929AA5E97006E7239 /* Embed.swift */; };
 		C65BD91D29AA5E97006E7239 /* VideoStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91A29AA5E97006E7239 /* VideoStream.swift */; };
 		C65BD92029AA6A70006E7239 /* SerialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91F29AA6A70006E7239 /* SerialView.swift */; };
-		C65BD92429AA7906006E7239 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD92329AA7906006E7239 /* RemoteImage.swift */; };
 		C6F045C729AA9B7900ED5281 /* LoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F045C629AA9B7900ED5281 /* LoginWebView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +56,6 @@
 		C65BD91929AA5E97006E7239 /* Embed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Embed.swift; sourceTree = "<group>"; };
 		C65BD91A29AA5E97006E7239 /* VideoStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStream.swift; sourceTree = "<group>"; };
 		C65BD91F29AA6A70006E7239 /* SerialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialView.swift; sourceTree = "<group>"; };
-		C65BD92329AA7906006E7239 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		C6F045C629AA9B7900ED5281 /* LoginWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				C600752329AAD1B9006001F0 /* Info.plist */,
-				C65BD92129AA78B6006E7239 /* Common */,
 				C65BD8CD29A999C4006E7239 /* Features */,
 				C65BD8B229A995C7006E7239 /* Models */,
 				C65BD8A429A995A0006E7239 /* Anime365App.swift */,
@@ -150,22 +147,6 @@
 				C600751C29AAC466006001F0 /* EmbedView.swift */,
 			);
 			path = Serial;
-			sourceTree = "<group>";
-		};
-		C65BD92129AA78B6006E7239 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				C65BD92229AA78C7006E7239 /* UI */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		C65BD92229AA78C7006E7239 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				C65BD92329AA7906006E7239 /* RemoteImage.swift */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +232,6 @@
 				C65BD90D29A99CF6006E7239 /* Translation.swift in Sources */,
 				C65BD91C29AA5E97006E7239 /* Embed.swift in Sources */,
 				C65BD8A729A995A0006E7239 /* ContentView.swift in Sources */,
-				C65BD92429AA7906006E7239 /* RemoteImage.swift in Sources */,
 				C65BD91D29AA5E97006E7239 /* VideoStream.swift in Sources */,
 				C65BD90E29A99CF6006E7239 /* Serial.swift in Sources */,
 				C65BD90C29A99CF6006E7239 /* Link.swift in Sources */,

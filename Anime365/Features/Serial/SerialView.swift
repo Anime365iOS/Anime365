@@ -25,7 +25,7 @@ struct SerialView: View {
                     HStack(alignment: .center, spacing: 5.0) {
                         Spacer()
                         // Show the poster of the show
-                        RemoteImage(src: serial.posterURL)
+                        AsyncImage(url: URL(string: serial.posterURL))
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 300)
                             .cornerRadius(8)
@@ -83,37 +83,6 @@ struct SerialView: View {
                 }
             }
             .padding()
-//            .sheet(isPresented: $episodeIsSelected) {
-//                if let episode = viewModel.episode {
-//                    let episodesByType = Dictionary(grouping: episode.translations) { $0.type.rawValue }
-//                        .mapValues { $0.sorted { $0.authorsSummary < $1.authorsSummary } }
-//
-//                    VStack {
-//                        Picker(selection: $selectedTab, label: Text("")) {
-//                            Text("RuSubs").tag("RuSubs")
-//                            Text("EnSubs").tag("EnSubs")
-//                            Text("RuDub").tag("RuDub")
-//                            Text("Raw").tag("Raw")
-//                        }
-//                        .pickerStyle(SegmentedPickerStyle())
-//
-//                        // Use a nested ForEach loop to display the buttons
-//                        ForEach(episode.translation.types.filter { $0.key == selectedTab }, id: \.key) { type in
-//                            ForEach(type.value, id: \.id) { subType in
-//                                Button(subType.authorsSummary) {
-//                                    // Handle button tap
-//                                }
-//                            }
-//                        }
-//
-//                        Spacer()
-//                    }
-//                    .padding()
-//                } else {
-//                    ProgressView("Loading a episode with id: \(String(id))")
-//                }
-//            }
-            
         }
         .task {
             self.viewModel.fetchSerial(id: id)
