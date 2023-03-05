@@ -14,6 +14,7 @@
 		C65BD8AC29A995A1006E7239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65BD8AB29A995A1006E7239 /* Preview Assets.xcassets */; };
 		C65BD8CB29A9974D006E7239 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C65BD8CA29A9974D006E7239 /* Alamofire */; };
 		C65BD92029AA6A70006E7239 /* SerialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD91F29AA6A70006E7239 /* SerialView.swift */; };
+		C6AFDDCD29B4E05400C35124 /* Serial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFDDCC29B4E05400C35124 /* Serial.swift */; };
 		C6DC4CBA29B414B300A0FDD4 /* AnimeAPI in Frameworks */ = {isa = PBXBuildFile; productRef = C6DC4CB929B414B300A0FDD4 /* AnimeAPI */; };
 		C6F045C729AA9B7900ED5281 /* LoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F045C629AA9B7900ED5281 /* LoginWebView.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 		C65BD8A829A995A1006E7239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C65BD8AB29A995A1006E7239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C65BD91F29AA6A70006E7239 /* SerialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialView.swift; sourceTree = "<group>"; };
+		C6AFDDCC29B4E05400C35124 /* Serial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serial.swift; sourceTree = "<group>"; };
 		C6DC4CB729B4146800A0FDD4 /* AnimeAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AnimeAPI; path = ../AnimeAPI; sourceTree = "<group>"; };
 		C6F045C629AA9B7900ED5281 /* LoginWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 			children = (
 				C65BD91F29AA6A70006E7239 /* SerialView.swift */,
 				C600751C29AAC466006001F0 /* EmbedView.swift */,
+				C6AFDDCC29B4E05400C35124 /* Serial.swift */,
 			);
 			path = Serial;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C600751D29AAC466006001F0 /* EmbedView.swift in Sources */,
+				C6AFDDCD29B4E05400C35124 /* Serial.swift in Sources */,
 				C6F045C729AA9B7900ED5281 /* LoginWebView.swift in Sources */,
 				C65BD8A729A995A0006E7239 /* ContentView.swift in Sources */,
 				C65BD92029AA6A70006E7239 /* SerialView.swift in Sources */,

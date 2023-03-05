@@ -11,83 +11,84 @@ import AnimeAPI
 
 struct SerialView: View {
     let id: Int
-    @ObservedObject private var viewModel = ViewModel()
-    @State var episodeIsSelected: Bool = false
-    @State var selectedTab: String = "RuSubs"
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                if let serial = viewModel.serial {
-                    // Show the title of the serial
-                    Text(serial.title)
-                        .font(.title)
-                    
-                    
-                    HStack(alignment: .center, spacing: 5.0) {
-                        Spacer()
-                        // Show the poster of the show
-                        AsyncImage(url: URL(string: serial.posterUrl))
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 300)
-                            .cornerRadius(8)
-                        
-                        Spacer()
-                    }
+    @ObservedObject var viewModel = ViewModel()
+    
+    // 1
+    private func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {
+        geometry.frame(in: .global).minY
+    }
+    
+    // 2
+    private func getOffsetForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
+        let offset = getScrollOffset(geometry)
+        let imageHeight = geometry.size.height
+        
+        // Image was pulled down
+        if offset > 0 {
+            return -offset
+        }
+        
+        return 0
+    }
+    
+    private func getHeightForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
+        let offset = getScrollOffset(geometry)
+        let imageHeight = geometry.size.height
 
-                    // Show the year and season and the rating of the show
-                    HStack(spacing: 10) {
-                        Spacer()
-                        Text(String(serial.year))
-                        Text(serial.season)
-                        HStack {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.yellow)
-                            Text(serial.myAnimeListScore)
-                        }
-                        Spacer()
-                    }
-                    // Show the list of genres
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Genres:")
-                            .font(.headline)
-                        HStack {
-                            ForEach(serial.genres, id: \.id) { genre in
-                                Text(genre.title)
-                            }
-                        }
-                    }
+        if offset > 0 {
+            return imageHeight + offset
+        }
+
+        return imageHeight
+    }
+    
+    private func getBlurRadiusForImage(_ geometry: GeometryProxy) -> CGFloat {
+        // 2
+        let offset = geometry.frame(in: .global).maxY
+
+        let height = geometry.size.height
+        let blur = (height - max(offset, 0)) / height // 3 (values will range from 0 - 1)
+        return blur * 6 // Values will range from 0 - 6
+    }
+    
+    var body: some View {
+        
+        Group {
+            if let serial = viewModel.serial {
+                ScrollView {
+                    GeometryReader { geometry in
+                        Image(uiImage: serial.poster)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: geometry.size.width, height: self.getHeightForHeaderImage(geometry))
+                            .blur(radius: self.getBlurRadiusForImage(geometry)) // 4
+                            .clipped()
+                            .offset(x: 0, y: self.getOffsetForHeaderImage(geometry))
+                    }.frame(height: serial.poster.size.height / 1.2)
                     
-                    // Show the description
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Description:")
-                            .font(.headline)
-                        Text(serial.descriptions.first?.value ?? "")
-                    }
-                    
-                    // Show the list of episodes
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Episodes:")
-                            .font(.headline)
-                        VStack {
-                            ForEach(serial.episodes, id: \.id) { episode in
-                                Button(action: {
-                                    episodeIsSelected = true
-                                    viewModel.fetchEpisode(id: episode.id)
-                                }, label: {
-                                    Text(episode.episodeFull)
-                                })
-                            }
+                    VStack(alignment: .leading, spacing: 16) {
+
+                        Text(serial.title.ru).font(.title)
+                        if let description = serial.description {
+                            Text(description).font(.body)
+                            Text(description).font(.body)
                         }
                     }
-                } else {
-                    ProgressView("Loading a serial with id: \(String(id))")
+                    .padding(.horizontal)
+                    .padding(.top, 16.0)
                 }
+                .edgesIgnoringSafeArea(.all)
+            } else {
+                ProgressView("Loading a serial with id: \(String(id))")
             }
-            .padding()
+            
         }
         .task {
-            self.viewModel.fetchSerial(id: id)
+            if (viewModel.serial == nil) {
+                self.viewModel.fetchSerial(id: id)
+            }
         }
+        
     }
 }
 
@@ -107,7 +108,7 @@ struct TranslationButton: View {
 
 struct SerialView_Previews: PreviewProvider {
     static var previews: some View {
-        SerialView(id: 28471)
+        SerialView(id: exampleSerial.id, viewModel: .mock(serial: exampleSerial));
     }
 }
 
@@ -119,34 +120,42 @@ extension SerialView {
         @Published var serial: Serial?
         @Published var episode: EpisodeFull?
         
+        init(serial: Serial? = nil) {
+            self.serial = serial
+        }
+        
+        static func mock(serial: Serial? = nil) -> ViewModel {
+            return ViewModel(serial: serial)
+        }
+        
         func fetchSerial(id: Int) {
-            Task.detached {
-                do {
-                    let data = try await self.api.getAnimeById(id: id)
-                    DispatchQueue.main.async {
-                        self.serial = data
-                    }
-                } catch {
-                    print("Error fetching data: \(error.localizedDescription)")
-                }
-            }
+            //            Task.detached {
+            //                do {
+            //                    let data = try await self.api.getAnimeById(id: id)
+            //                    DispatchQueue.main.async {
+            //                        self.serial = data
+            //                    }
+            //                } catch {
+            //                    print("Error fetching data: \(error.localizedDescription)")
+            //                }
+            //            }
         }
         
         func fetchEpisode(id: Int) {
-            if episode != nil && episode?.id == id {
-                return;
-            }
-            
-            Task.detached {
-                do {
-                    let data = try await self.api.getEpisodeInfo(id: id)
-                    DispatchQueue.main.async {
-                        self.episode = data
-                    }
-                } catch {
-                    print("Error fetching data: \(error.localizedDescription)")
-                }
-            }
+            //            if episode != nil && episode?.id == id {
+            //                return;
+            //            }
+            //
+            //            Task.detached {
+            //                do {
+            //                    let data = try await self.api.getEpisodeInfo(id: id)
+            //                    DispatchQueue.main.async {
+            //                        self.episode = data
+            //                    }
+            //                } catch {
+            //                    print("Error fetching data: \(error.localizedDescription)")
+            //                }
+            //            }
         }
     }
 }

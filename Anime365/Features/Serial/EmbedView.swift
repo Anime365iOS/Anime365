@@ -68,11 +68,12 @@ extension EmbedView {
         @Published var embed: Embed?
         @Published var player: AVPlayer?
         @Published var progress = 0.0
+        @Published var image: CGImage?
         
         var id: Int {
             if let embed = embed {
-                if let range = embed.subtitlesVttURL.range(of: #"[0-9]+"#, options: .regularExpression) {
-                    let numberString = embed.subtitlesVttURL[range]
+                if let range = embed.subtitlesVttUrl.range(of: #"[0-9]+"#, options: .regularExpression) {
+                    let numberString = embed.subtitlesVttUrl[range]
                     if let number = Int(numberString) {
                         return number
                     }
@@ -106,7 +107,7 @@ extension EmbedView {
 
             
             return try await withCheckedThrowingContinuation { continuation in
-                AF.download(embed!.subtitlesVttURL, to: destination).response { response in
+                AF.download(embed!.subtitlesVttUrl, to: destination).response { response in
                     if response.error != nil {
                         continuation.resume(with: .failure(response.error!))
                     } else {
@@ -453,10 +454,7 @@ extension EmbedView {
             print("START WRITE SUBS")
             writeSubtitles();
             let video = AVAsset(url: outputVideoURL!);
-            print("play \(String(describing: outputVideoURL))")
             let playerItem = AVPlayerItem(asset: video)
-            let isAirEnabled = video.isCompatibleWithAirPlayVideo;
-            print(isAirEnabled)
             let titleItem = AVMutableMetadataItem()
             titleItem.identifier = .commonIdentifierTitle
             titleItem.value = NSString(string: "Episode 8")
@@ -472,9 +470,28 @@ extension EmbedView {
             
             DispatchQueue.main.async {
                 self.player = AVPlayer(playerItem: playerItem)
-                self.player?.allowsExternalPlayback = isAirEnabled
+                self.player?.allowsExternalPlayback = playerItem.asset.isCompatibleWithAirPlayVideo
                 self.player?.usesExternalPlaybackWhileExternalScreenIsActive = true
             }
+        }
+        
+        func createPreview() async throws -> Void {
+            guard let streamURL = streamURL else {
+                return;
+            }
+            let videoAsset = AVAsset(url: streamURL)
+            let generator = AVAssetImageGenerator(asset: videoAsset)
+            generator.maximumSize = CGSize(width: 450, height: 0)
+            let time = try await videoAsset.load(.duration)
+            let randomValue = Double.random(in: 0..<1) * Double(time.timescale)
+            let randomTime = CMTimeMake(value: CMTimeValue(randomValue), timescale: time.timescale)
+
+            print(randomTime, randomValue)
+            let (image, _) = try await generator.image(at: randomTime)
+            DispatchQueue.main.async {
+                self.image = image
+            }
+            
         }
         
         func stopPlayer() {
@@ -491,9 +508,10 @@ extension EmbedView {
                         self.embed = data
                         Task.detached {
                             do {
-                                self.subtitleURL = try await self.fetchSubtitles()
-                                self.videoURL = try await self.fetchVideo()
-                                try await self.createPlayer()
+//                                self.subtitleURL = try await self.fetchSubtitles()
+//                                self.videoURL = try await self.fetchVideo()
+//                                try await self.createPlayer()
+                                try await self.createPreview()
                             } catch {
                                 print(error.localizedDescription)
                             }
