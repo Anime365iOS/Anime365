@@ -11,6 +11,7 @@ import AVFoundation
 import Alamofire
 import Photos
 import CoreFoundation
+import AnimeAPI
 
 struct EmbedView: View {
     let id: Int

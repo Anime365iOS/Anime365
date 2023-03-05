@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import AnimeAPI
 
 struct SerialView: View {
     let id: Int
@@ -25,7 +26,7 @@ struct SerialView: View {
                     HStack(alignment: .center, spacing: 5.0) {
                         Spacer()
                         // Show the poster of the show
-                        AsyncImage(url: URL(string: serial.posterURL))
+                        AsyncImage(url: URL(string: serial.posterUrl))
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 300)
                             .cornerRadius(8)
